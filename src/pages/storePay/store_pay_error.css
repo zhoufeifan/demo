@@ -1,0 +1,47 @@
+/*设置手机端网页不出现滚动条*/
+html {
+  overflow: hidden;
+  height: 100%;
+}
+body {
+  text-align: center;
+  overflow: hidden;
+  height: 100%;
+}
+.main {
+  text-align: center;
+  width: 35rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.main div {
+  margin-left: auto;
+  margin-right: auto;
+}
+.head {
+  margin-top: 2rem;
+  height: 3.2rem;
+  line-height: 3.2rem;
+}
+.head .zyp_logo {
+  width: 3.2rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.head .tag {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.6rem;
+  margin-left: 1.2rem;
+}
+.content {
+  margin-top: 6rem;
+}
+.content div {
+  font-size: 1.4rem;
+  color: #B9B9B9;
+}
+.content .brand {
+  color: #33B7BE;
+  font-size: 1.6rem;
+}

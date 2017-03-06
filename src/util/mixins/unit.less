@@ -1,0 +1,136 @@
+@unitBase: 37.5;
+//@unitBase: 75;
+
+.width(@w) {
+  width: unit(@w/@unitBase, rem);
+}
+
+.min-width(@w) {
+  min-width: unit(@w/@unitBase, rem);
+}
+
+.max-width(@w) {
+  max-width: unit(@w/@unitBase, rem);
+}
+
+.height(@h) {
+  height: unit(@h/@unitBase, rem);
+}
+
+.min-height(@h) {
+  height: unit(@h/@unitBase, rem);
+}
+
+.max-height(@h) {
+  height: unit(@h/@unitBase, rem);
+}
+
+.line-height(@a) {
+  line-height: unit(@a/@unitBase, rem);
+}
+
+.margin(@a) {
+  margin: unit(@a/@unitBase, rem);
+}
+.margin(@a, @b) {
+  margin: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem);
+}
+.margin(@a, @b, @c) {
+  margin: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem) unit(@c/@unitBase, rem);
+}
+.margin(@a, @b, @c, @d) {
+  margin: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem) unit(@c/@unitBase, rem) unit(@d/@unitBase, rem);
+}
+.margin-top(@a) {
+  margin-top: unit(@a/@unitBase, rem);
+}
+.margin-right(@a) {
+  margin-right: unit(@a/@unitBase, rem);
+}
+.margin-bottom(@a) {
+  margin-bottom: unit(@a/@unitBase, rem);
+}
+.margin-left(@a) {
+  margin-left: unit(@a/@unitBase, rem);
+}
+
+.padding(@a) {
+  padding: unit(@a/@unitBase, rem);
+}
+.padding(@a, @b) {
+  padding: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem);
+}
+.padding(@a, @b, @c) {
+  padding: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem) unit(@c/@unitBase, rem);
+}
+.padding(@a, @b, @c, @d) {
+  padding: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem) unit(@c/@unitBase, rem) unit(@d/@unitBase, rem);
+}
+.padding-top(@a) {
+  padding-top: unit(@a/@unitBase, rem);
+}
+.padding-right(@a) {
+  padding-right: unit(@a/@unitBase, rem);
+}
+.padding-bottom(@a) {
+  padding-bottom: unit(@a/@unitBase, rem);
+}
+.padding-left(@a) {
+  padding-left: unit(@a/@unitBase, rem);
+}
+
+.left(@a) {
+  left: unit(@a/@unitBase, rem);
+}
+
+.top(@a) {
+  top: unit(@a/@unitBase, rem);
+}
+
+.right(@a) {
+  right: unit(@a/@unitBase, rem);
+}
+
+.bottom(@a) {
+  bottom: unit(@a/@unitBase, rem);
+}
+
+.border(@a, @b, @c) {
+  border: unit(@a/@unitBase, rem) @b @c;
+}
+
+.border-radius(@a){
+  border-radius: unit(@a/@unitBase, rem);
+}
+
+.border-radius(@a, @b, @c, @d) {
+  border-radius: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem) unit(@c/@unitBase, rem) unit(@d/@unitBase, rem);
+}
+
+.border-width(@a){
+  border-width: unit(@a/@unitBase, rem);
+}
+.border-width(@a, @b){
+  border-width: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem);
+}
+.border-width(@a, @b, @c){
+  border-width: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem) unit(@c/@unitBase, rem);;
+}
+.border-width(@a, @b, @c, @d){
+  border-width: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem) unit(@c/@unitBase, rem) unit(@d/@unitBase, rem);
+}
+.border-radius(@a, @b, @c, @d) {
+  border-radius: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem) unit(@c/@unitBase, rem) unit(@d/@unitBase, rem);
+}
+
+.font-size(@a) {
+  font-size: unit(@a/@unitBase, rem);
+}
+
+.background-size(@a, @b) {
+  background-size: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem);
+}
+
+.background-position(@a, @b) {
+  background-position: unit(@a/@unitBase, rem) unit(@b/@unitBase, rem);
+}
