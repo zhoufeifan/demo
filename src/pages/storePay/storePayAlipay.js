@@ -1,6 +1,9 @@
 require('./storePayAlipay.scss');
 $(function () {
-    var input = $('#moneyInput');
+    var $moneyInput = $('#moneyInput');
+    var $amountInput = $('#amountInput');
+    var $cursor = $('#cursor');
+    var $placeHolder = $('#placeHolder');
     var numberKeyboard = $('#numberKeyboard');
     var clearNum = $('#clearNum');
     var payBtn = $('#payBtn');
@@ -70,19 +73,20 @@ $(function () {
     //发起付款
     function pay() {
         cover.show();
-        return;
         setTimeout(function () {
             cover.hide();
             alert("付款成功");
-        },1000);
+        }, 1000);
     }
 
     //根据校验输入框的金额来控制页面的样式
     function checkInput(value) {
         if (value == "") {
             clearNum.hide();
+            $placeHolder.show();
         } else {
             clearNum.show();
+            $placeHolder.hide();
         }
         //限制金额为1000万
         var Rxp = /^(([1-9]\d{0,8})|0)(\.\d{1,2})?$/;
@@ -96,22 +100,27 @@ $(function () {
         }
     }
 
-    input.focus(function (e) {
-        e.preventDefault();
-        input.blur();
-        moveKeyBoard("show");
-        return false;
+    $moneyInput.on('click', function () {
+        $moneyInput.focus();
     });
+    $moneyInput.focus = function () {
+        $cursor.show();
+        moveKeyBoard("show");
+    };
+    $moneyInput.blur = function () {
+        $cursor.hide();
+        moveKeyBoard("hide");
+    };
     remark.focus(function (e) {
         e.preventDefault();
-        moveKeyBoard("hide");
+        $moneyInput.blur();
     });
     //清除按钮
     clearNum.click(function (e) {
         e.preventDefault();
-        input.val('');
+        $amountInput.text('');
         money_value.length = 0;
-        checkInput(input.val());
+        checkInput($amountInput.text());
     });
 
     $('body').on("touchmove", function (e) {
@@ -143,8 +152,8 @@ $(function () {
                 return
         }
         money_value.push(current_value);
-        input.val(money_value.join(''));
-        checkInput(input.val());
+        $amountInput.text(money_value.join(''));
+        checkInput($amountInput.text());
     });
     //键盘收起按钮
     $('#keyboard').on('touchstart', function (e) {
@@ -159,8 +168,8 @@ $(function () {
         if (money_value.length == 0)
             return;
         money_value.length = money_value.length - 1;
-        input.val(money_value.join(''));
-        checkInput(input.val());
+        $amountInput.text(money_value.join(''));
+        checkInput($amountInput.text());
     });
 
     //触摸或滑动后键盘的响应

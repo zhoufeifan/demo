@@ -3,6 +3,7 @@ $grayColor: #666666; //深灰色
 $lightGrayColor: #999999; //浅灰色
 $deepDarkColor: #333333; //深黑色
 $browser-default-font-size: 37.5px; //浏览器默认的字体大小
+$placeHolderColor: #bbbbbb;
 
 @function pxTorem($px) {
     @return $px / $browser-default-font-size * 1rem;
@@ -80,21 +81,40 @@ $browser-default-font-size: 37.5px; //浏览器默认的字体大小
         height: 0;
     }
     //文字适配
-    [data-dpr="1"] .mod-help-title .text{font-size:14px}
-    [data-dpr="2"] .mod-help-title .text{font-size:28px}
-    [data-dpr="3"] .mod-help-title .text{font-size:42px;}
-    [data-dpr="1"] .mod-help-list a{font-size:16px}
-    [data-dpr="2"] .mod-help-list a{font-size:32px}
-    [data-dpr="3"] .mod-help-list a{font-size:48px;}
-    [data-dpr="1"] .empty-container {font-size:16px}
-    [data-dpr="2"] .empty-container {font-size:32px}
-    [data-dpr="3"] .empty-container {font-size:48px;}
+    [data-dpr="1"] .mod-help-title .text {
+        font-size: 14px
+    }
+    [data-dpr="2"] .mod-help-title .text {
+        font-size: 28px
+    }
+    [data-dpr="3"] .mod-help-title .text {
+        font-size: 42px;
+    }
+    [data-dpr="1"] .mod-help-list a {
+        font-size: 16px
+    }
+    [data-dpr="2"] .mod-help-list a {
+        font-size: 32px
+    }
+    [data-dpr="3"] .mod-help-list a {
+        font-size: 48px;
+    }
+    [data-dpr="1"] .empty-container {
+        font-size: 16px
+    }
+    [data-dpr="2"] .empty-container {
+        font-size: 32px
+    }
+    [data-dpr="3"] .empty-container {
+        font-size: 48px;
+    }
 }
 
 @mixin center-block {
     margin-left: auto;
     margin-right: auto;
 }
+
 //参数冒号后面的值为默认值
 @mixin Height($height:30px) {
     height: pxTorem($height);

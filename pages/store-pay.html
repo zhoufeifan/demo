@@ -27,7 +27,11 @@
             <span class="tag">付款金额</span>
             <div class="input-body">
                 ￥
-                <input type="text" class="money-input" id="moneyInput" placeholder="0.00" readonly="readonly"/>
+                <div class="money-input" id="moneyInput">
+                    <span class="placeholder" id="placeHolder">0.00</span>
+                    <div class="amount-input" id="amountInput"></div>
+                    <span class="cursor" id="cursor"></span>
+                </div>
                 <img id="clearNum">
                 <input type="text" class="urlvalue" value="www.baidu.com" style="display: none;"></input>
             </div>
