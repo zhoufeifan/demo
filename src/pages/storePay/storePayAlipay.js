@@ -75,7 +75,6 @@ $(function () {
         cover.show();
         setTimeout(function () {
             cover.hide();
-            alert("付款成功");
         }, 1000);
     }
 

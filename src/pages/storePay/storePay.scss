@@ -22,21 +22,32 @@
     z-index: 100;
     background-color: rgba(255, 255, 255, 0.6);
     text-align: center;
-    .loading-icon {
-        width: pxTorem(40px);
-        position: absolute;
-        top: 50%;
-        transform: translateX(-50%) translateY(-50%);
-    }
     .content {
+        color:white;
+        font-size: 16px;
         @include center-block;
-        margin-top: pxTorem(160px);
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 4px;
         width: pxTorem(120px);
         height: pxTorem(120px);
-        background: url("../../images/waiting.jpg") no-repeat center center;
-        background-size: 40%;
+        line-height: pxTorem(80px);
+        margin-top: 50%;
+        transform: translateY(50%);
+    }
+    .typing-loader{
+        @include center-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        animation: typing 1s linear infinite;
+        position: relative;
+        left: -12px;
+        background-color: rgba(255,255,255, 1);
+        box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2),
+        24px 0px 0px 0px rgba(255,255,255,0.2);
     }
 }
+
 
 .main {
     padding-top: 1px;
@@ -229,3 +240,20 @@
     }
 }
 
+/*Typing Loader*/
+@keyframes typing{
+    0%{
+      background-color: rgba(255,255,255, 1);
+      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2),
+      24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    25%{
+      background-color: rgba(255,255,255, 0.2);
+      box-shadow: 12px 0px 0px 0px rgba(255,255,255,1),
+      24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    75%{ background-color: rgba(255,255,255, 0.2);
+      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.2),
+      24px 0px 0px 0px rgba(255,255,255,1);
+    }
+}

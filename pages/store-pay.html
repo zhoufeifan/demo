@@ -7,21 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1 ,maximum-scale=1, minimum-scale=1, user-scalable=no">
     <title>付款页面</title>
 <!--zepto以及插件-->
-<script src="//cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
-<script src="//cdn.bootcss.com/velocity/1.4.3/velocity.min.js"></script>
+<script src="http://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script src="http://cdn.bootcss.com/velocity/1.4.3/velocity.min.js"></script>
 <script src="../src/rem.js?v=1.1.0"></script>
 <!--支付宝-->
 <script type="text/javascript" src="../dist/pages/storePay/storePayAlipay.js?t=20160122"></script>
 </head>
 <body class="disable-scroll">
 <div class="cover" id="cover">
-    <div class="content"></div>
+    <div class="content">
+        付款中
+        <div class="typing-loader"></div>
+    </div>
 </div>
 <div class="main">
     <div class="content" id="topContent">
         <div class="shop-logo-default"></div>
         <span class="shop-name">
-            大中华
+            大中华店
         </span>
         <div class="input-content">
             <span class="tag">付款金额</span>
