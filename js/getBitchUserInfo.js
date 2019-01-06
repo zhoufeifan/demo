@@ -50,65 +50,44 @@ function requestUserProfile (uidList){  // uidList 是一个数组，最大接�
 // 完成以下方法，接收一个参数 uid，返回一个 Promise，当成功请求到 profile 的时候， resolve 对应的profile , 请求失败 reject
 // 例如  getUserProfile(1).then(function(profile){ console.log(profile.uid === 1) // true });  // 假设请求成功了。
 
-var getUserProfile = function (uid){
-  function RequestProxy(){
-    this.uidList = [];
-    this.userInfo = {};
-    this.promiseProxy = null;
+var getUserProfile = function(uid){
+  // 100ms 作为状态收集的周期
+  function ProxyFactory(){
+    this.uidList = []
+    this.uidCache = {}
   }
-  let count = 0;
-  let uidMap = {};
-  RequestProxy.prototype.request = function(uid){
-    this.uidList.push(uid);
-    if(!this.promiseProxy){
-        this.promiseProxy = new Promise((resolve)=>{
-          setTimeout(async()=>{
-            let list = this.uidList.concat();
-            let result = await requestUserProfile(list);
-            console.log(`代理方法执行完毕,批量请求id为${list.join(',')}`);
-            resolve(result);
-          },100);
-      });
+  ProxyFactory.prototype.getUser = function(uid){
+    if (!this.uidCache[uid]) {
+      this.uidList.push(uid)
+      this.uidCache[uid] = true
     }
-    return this.promiseProxy;
+    this.batchRequest =  this.batchRequest
+    || new Promise((resolve)=>{
+        setTimeout(()=>{
+          console.log(`代理方法执行完毕,批量请求id为${this.uidList.join(',')}`)
+          requestUserProfile(this.uidList).then(resolve)
+        },100)
+      })
+    return this.batchRequest
   }
-  let startTime = null;
-  let currentTime = null;
-
-  let batchRequest = null;
-  getUserProfile = function(uid){
-    currentTime = + new Date();
-    if (!startTime) {
-      startTime = currentTime;
+  let requestProxy = null
+  let startTime = null
+  // todo 并发请求限制在8以内
+  getUserProfile = function (uid) {
+    let currnetTime = +new Date()
+    startTime = startTime || currnetTime
+    requestProxy = requestProxy || new ProxyFactory()
+    // 时间超过 100ms 或者请求数量超过100, 开启新的请求代理
+    if (currnetTime - startTime > 100 || requestProxy.uidList.length >= 100) {
+      startTime = currnetTime
+      requestProxy = new ProxyFactory()
     }
-    if(!uidMap[uid]){
-      //保存uid
-      count ++;
-      uidMap[uid] = true;
-    }
-    if(currentTime - startTime >100 || count>100){
-      //如果两次请求的时差超过100ms 或者 数量超过100，则清空数据开启新的批量请求组
-      count = 1;
-      uidMap = {};
-      startTime = currentTime;
-      batchRequest = null;
-    }
-    if(!batchRequest){
-      batchRequest = new RequestProxy();
-    }
-    return (batchRequest.request(uid)).then(dataList=>{
-        let result = dataList.find(item=>{
-            return item.uid === uid;
-        });
-        return result || {};
-    });
+    return requestProxy.getUser(uid).then(userList =>{
+      return userList.filter(item => item.uid === uid)[0] || {}
+    })
   }
-  return getUserProfile(uid);
+  return getUserProfile(uid)
 }
-
-// for(let id of [-1]){
-//   getUserProfile(id).then(profile=>{console.log(`id为${id}认证结果`,profile.uid === id)});
-// }
 
 for(let id = 0; id < 200; id++ ){
 let uid = id % 5 ? id : 1;
