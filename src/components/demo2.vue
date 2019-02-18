@@ -80,7 +80,9 @@ export default {
 </script>
 <style lang='scss' scoped>
 .container{
+  border: 1px solid #eee;
   width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }

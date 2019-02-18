@@ -1,16 +1,19 @@
 # demo
 
+## 首页地址
+http://blog.zhoufeifan.tech/demo/dist/index.html#/
+
 ## Project setup
 ```
-yarn install
+npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production
 ```
-yarn run build
+npm run build
 ```

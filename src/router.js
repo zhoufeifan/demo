@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import RedPacket from './views/RedPacket.vue'
 
 Vue.use(Router)
 
@@ -14,14 +15,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    },
-    {
       path: '/redPacket',
       name: 'redPacket',
-      component: () => import('./views/RedPacket.vue')
+      component: RedPacket
     }
     
   ]

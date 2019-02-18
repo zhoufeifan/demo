@@ -36,11 +36,12 @@ import demo2 from '@/components/demo2.vue'
 <style lang='scss' scoped>
 @import '~@/style/mixin.scss';
 .main-container{
-  .container{
+  >.container{
     width: 375px;
     height: 667px;
     margin: 30px auto;
     .title{
+      padding: 10px;
       cursor: pointer;
     }
   }
