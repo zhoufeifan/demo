@@ -4,7 +4,7 @@
     <div id="nav">
       <ul>
         <li><router-link to="/redpacket">红包动画优化</router-link></li>
-        <li></li>
+        <li><router-link to="/moveDirection">滑动方向判断</router-link></li>
         <li></li>
       </ul>
     </div>
@@ -14,6 +14,9 @@
 <style lang="scss" scoped>
 .home{
   padding: 10px;
+  ul>li{
+   margin-top: 10px; 
+  }
 }
 #nav {
   padding: 30px;
