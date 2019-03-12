@@ -5,6 +5,7 @@ import RedPacket from './views/RedPacket.vue'
 import Demo from './views/Demo.vue'
 import Demo1 from './views/Demo1.vue'
 import MoveDirection from './views/MoveDirection.vue'
+import NumberInput from './views/NumberInput.vue'
 
 Vue.use(Router)
 
@@ -20,7 +21,7 @@ export default new Router({
       name: 'redPacket',
       component: RedPacket
     },{
-      path: '/moveDirection',
+      path: '/movedirection',
       name: 'moveDirection',
       component: MoveDirection
     },{
@@ -32,6 +33,11 @@ export default new Router({
       path: '/demo1',
       name: 'demo1',
       component: Demo1,
+      meta: {keepAlive: false}
+    },{
+      path: '/numberinput',
+      name: 'numberInput',
+      component: NumberInput,
       meta: {keepAlive: false}
     }]
 })

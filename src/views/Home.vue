@@ -4,8 +4,9 @@
     <div id="nav">
       <ul>
         <li><router-link to="/redpacket">红包动画优化</router-link></li>
-        <li><router-link to="/moveDirection">滑动方向判断</router-link></li>
-        <li><router-link to="/demo">demo</router-link></li>
+        <li><router-link to="/movedirection">滑动方向判断</router-link></li>
+        <li><router-link to="/numberinput">数字输入框</router-link></li>
+        <!-- <li><router-link to="/demo">demo</router-link></li> -->
         <li></li>
       </ul>
     </div>
