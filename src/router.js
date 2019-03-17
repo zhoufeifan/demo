@@ -3,9 +3,9 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import RedPacket from './views/RedPacket.vue'
 import Demo from './views/Demo.vue'
-import Demo1 from './views/Demo1.vue'
 import MoveDirection from './views/MoveDirection.vue'
 import NumberInput from './views/NumberInput.vue'
+import SlideBarList from './views/SlideBarList.vue'
 
 Vue.use(Router)
 
@@ -25,19 +25,16 @@ export default new Router({
       name: 'moveDirection',
       component: MoveDirection
     },{
-      path: '/demo/:id',
+      path: '/demo',
       name: 'demo',
       component: Demo,
-      meta: {keepAlive: true}
-    },{
-      path: '/demo1',
-      name: 'demo1',
-      component: Demo1,
-      meta: {keepAlive: false}
     },{
       path: '/numberinput',
       name: 'numberInput',
       component: NumberInput,
-      meta: {keepAlive: false}
+    },{
+      path: '/slideBarList',
+      name: 'slideBarList',
+      component: SlideBarList,
     }]
 })

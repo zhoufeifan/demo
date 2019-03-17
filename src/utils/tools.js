@@ -1,4 +1,4 @@
-function throttle(fn, delay, maxDelay){
+function throttle(fn, delay){
   let startTime = -Infinity // 记录上次触发的时间
   let timer = null
   return function(){
@@ -7,7 +7,7 @@ function throttle(fn, delay, maxDelay){
     let context = this
     // 保留调用时传入的参数
     let args = arguments
-    if(currentTime - startTime >= maxDelay){
+    if(currentTime - startTime >= delay){
       startTime = currentTime
       fn.apply(context, args)
     }else {

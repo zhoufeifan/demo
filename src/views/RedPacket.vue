@@ -52,8 +52,8 @@ import demo2 from '@/components/demo2.vue'
     position: absolute;
     &.new{
       transition: transform 2s linear;
-      top: 0;
       transform: translateY(-78px) rotateX(0) rotateY(0) rotateZ(0);
+      will-change: transform;
     }
     &.old{
       position: absolute;
