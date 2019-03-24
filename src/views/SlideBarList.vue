@@ -1,6 +1,6 @@
 <template>
 <ul class="list-container">
-  <li v-for="item in list" class='item' ref="moveBar" id='nima' :key="item.title" @touchstart="touch" @touchmove.stop="move">
+  <li v-for="item in list" class='item' ref="moveBar" id='nima' :key="item.title" @touchstart="touch" @touchmove.stop="move" @touchend.stop="end">
     <figure>
       <img :src="item.avatar" width="50px;"/>
     </figure>
@@ -15,8 +15,9 @@
 </template>
 <script>
   import { throttle } from '@/utils/tools';
-  const MIN_OFFSET = -80; // 最大滑动距离
-  const MAX_OFFSET = 0; // 最大滑动距离
+  const MIN_OFFSET = -200; // 滑动偏移左极值
+  const MAX_OFFSET = 0; // 滑动偏移右极值
+  const MID_OFFSET = (MAX_OFFSET + MIN_OFFSET)/2; // 中间值
   function gesture(startPoint, endPoint){
     let relativePoint = {X: endPoint.X-startPoint.X, Y: endPoint.Y-startPoint.Y};
     // 以浏览器的Y轴正向为主轴，滑动路径较主轴的逆时针方向偏移角度
@@ -59,6 +60,22 @@
         this.previousPoint.X = e.changedTouches[0].pageX;
         this.previousPoint.Y = e.changedTouches[0].pageY;
       },
+      goBack(t = 0){
+        const a = 0.2
+        if(this.offset >= MAX_OFFSET || this.offset <= MIN_OFFSET) return
+        const distance = 3 + a * t * t
+        if(this.offset > MID_OFFSET){
+          // 往右移动
+          this.offset = Math.min(MAX_OFFSET, this.offset + distance)
+        } else {
+          // 往左移动
+          this.offset = Math.max(MIN_OFFSET, this.offset - distance)
+        }
+        this.$refs.moveBar[0].style.webkitTransform = `translateX(${this.offset}px)`
+        window.requestAnimationFrame(()=>{
+          this.goBack(t+1)
+        })
+      },
       move(e){
         this.currentPoint.X = e.changedTouches[0].pageX;
         this.currentPoint.Y = e.changedTouches[0].pageY;
@@ -73,6 +90,9 @@
         this.previousPoint.X = this.currentPoint.X
         this.previousPoint.Y = this.currentPoint.Y
         this.$refs.moveBar[0].style.webkitTransform = `translateX(${offset}px)`
+      },
+      end() {
+        this.goBack()
       }
     }
   }
@@ -118,10 +138,10 @@
       }
     }
     .delete{
-      width: 80px;
+      width: 200px;
       position: absolute;
       background-color: #ff6666;
-      right: -80px;
+      right: -200px;
       @include Height(80px);
       font-size: 16px;
       color: white;
