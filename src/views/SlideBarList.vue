@@ -1,6 +1,6 @@
 <template>
 <ul class="list-container">
-  <li v-for="item in list" :class="['item', item.moved ? 'moved': '']" :key="item.title" @touchstart="touch" @touchmove.stop="move(item, $event)">
+  <li v-for="item in list" class='item' ref="moveBar" id='nima' :key="item.title" @touchstart="touch" @touchmove.stop="move">
     <figure>
       <img :src="item.avatar" width="50px;"/>
     </figure>
@@ -14,7 +14,9 @@
 </ul>
 </template>
 <script>
-  import { throttle } from '@/utils/tools'
+  import { throttle } from '@/utils/tools';
+  const MIN_OFFSET = -80; // 最大滑动距离
+  const MAX_OFFSET = 0; // 最大滑动距离
   function gesture(startPoint, endPoint){
     let relativePoint = {X: endPoint.X-startPoint.X, Y: endPoint.Y-startPoint.Y};
     // 以浏览器的Y轴正向为主轴，滑动路径较主轴的逆时针方向偏移角度
@@ -47,45 +49,46 @@
           date: '3月10日',
           content: '发顺丰撒旦副书记奥利弗就烦死了开飞机睡懒觉广东韶关发生的副驾驶大立科技斐林试剂'
         }],
-        startPoint: {},
-        endPoint: {}
+        previousPoint: {},
+        currentPoint: {},
+        offset: 0
       }
     },
     methods: {
       touch(e){
-        this.startPoint.X = e.changedTouches[0].pageX;
-        this.startPoint.Y = e.changedTouches[0].pageY;
+        this.previousPoint.X = e.changedTouches[0].pageX;
+        this.previousPoint.Y = e.changedTouches[0].pageY;
       },
-      move: throttle(function(item, e){
-        this.endPoint.X = e.changedTouches[0].pageX;
-        this.endPoint.Y = e.changedTouches[0].pageY;
-        const direction = gesture(this.startPoint, this.endPoint);
-        if(direction === 'left'){
-          //调用preventDefault 解决ios 滑动卡顿问题
-          e.preventDefault();
-          this.$set(item,'moved', true)
-        }else if(direction === 'right'){
-          e.preventDefault();
-          this.$set(item,'moved', false)
-        }
-      },500)
-    },
+      move(e){
+        this.currentPoint.X = e.changedTouches[0].pageX;
+        this.currentPoint.Y = e.changedTouches[0].pageY;
+        const direction = gesture(this.previousPoint, this.currentPoint);
+        if(direction === 'up' || direction === 'down') return
+        e.preventDefault(); // 解决ios卡顿问题
+        if(direction === 'left' && this.offset === -80) return
+        if(direction === 'right' && this.offset === 0) return
+        let offset = this.offset + (this.currentPoint.X - this.previousPoint.X)
+        offset = Math.max(MIN_OFFSET, Math.min(MAX_OFFSET, offset))
+        this.offset = offset
+        this.previousPoint.X = this.currentPoint.X
+        this.previousPoint.Y = this.currentPoint.Y
+        this.$refs.moveBar[0].style.webkitTransform = `translateX(${offset}px)`
+      }
+    }
   }
 </script>
 <style lang='scss' scoped>
 @import '~@/style/mixin.scss';
 .list-container{
   overflow: hidden;
+  position: absolute;
   >.item {
     display: flex;
     height: 80px;
     padding: 10px;
     align-items: center;
     position: relative;
-    transition: transform .3s;
-    &.moved{
-      transform: translateX(-80px);
-    }
+    will-change: transform;
     figure > img{
       vertical-align: middle;
     }
@@ -116,7 +119,6 @@
     }
     .delete{
       width: 80px;
-      transition: transform .5s;
       position: absolute;
       background-color: #ff6666;
       right: -80px;
