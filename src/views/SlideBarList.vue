@@ -15,7 +15,7 @@
 </template>
 <script>
   import { throttle } from '@/utils/tools';
-  const MIN_OFFSET = -200; // 滑动偏移左极值
+  const MIN_OFFSET = -100; // 滑动偏移左极值
   const MAX_OFFSET = 0; // 滑动偏移右极值
   const MID_OFFSET = (MAX_OFFSET + MIN_OFFSET)/2; // 中间值
   function gesture(startPoint, endPoint){
@@ -138,10 +138,10 @@
       }
     }
     .delete{
-      width: 200px;
+      width: 100px;
       position: absolute;
       background-color: #ff6666;
-      right: -200px;
+      right: -100px;
       @include Height(80px);
       font-size: 16px;
       color: white;
