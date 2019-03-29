@@ -6,6 +6,7 @@ import Demo from './views/Demo.vue'
 import MoveDirection from './views/MoveDirection.vue'
 import NumberInput from './views/NumberInput.vue'
 import SlideBarList from './views/SlideBarList.vue'
+import LazyLoad from './views/LazyLoadPage.vue'
 
 Vue.use(Router)
 
@@ -17,11 +18,11 @@ export default new Router({
       name: 'home',
       component: Home
     },{
-      path: '/redPacket',
+      path: '/red-packet',
       name: 'redPacket',
       component: RedPacket
     },{
-      path: '/movedirection',
+      path: '/move-direction',
       name: 'moveDirection',
       component: MoveDirection
     },{
@@ -29,12 +30,17 @@ export default new Router({
       name: 'demo',
       component: Demo,
     },{
-      path: '/numberinput',
+      path: '/number-input',
       name: 'numberInput',
       component: NumberInput,
     },{
-      path: '/slideBarList',
+      path: '/slide-bar-list',
       name: 'slideBarList',
       component: SlideBarList,
-    }]
+    },{
+      path: '/lazyload',
+      name: 'LazyLoad',
+      component: LazyLoad,
+    }
+  ]
 })
