@@ -9,6 +9,7 @@
         <li><router-link to="/lazyload">图片懒加载</router-link></li>
         <li><router-link to="/progress-bar">进度条</router-link></li>
         <li><router-link to="/slide-bar-list">左滑删除</router-link></li>
+        <li><router-link to="/message-director">消息机制</router-link></li>
         <li><router-link to="/demo">demo</router-link></li>
         <li></li>
       </ul>

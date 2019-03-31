@@ -1,10 +1,11 @@
 <template>
 <section class="image-container" ref="container">
-
 </section>
 </template>
 <script>
   const screenHeight = window.screen.height
+  const nima = require('intersection-observer');
+  console.log(nima)
   // 定义缓冲距离，用于懒加载
   const BUFFER_HEIGHT = 0
   export default {

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "animejs": "^3.0.1",
+    "intersection-observer": "^0.5.1",
     "vue": "^2.5.22",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

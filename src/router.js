@@ -8,6 +8,7 @@ import NumberInput from './views/NumberInput.vue'
 import SlideBarList from './views/SlideBarList.vue'
 import LazyLoad from './views/LazyLoadPage.vue'
 import ProgressBar from './views/ProgressBar.vue'
+import MessageDirector from './views/MessageDirector.vue'
 
 Vue.use(Router)
 const router = new Router({
@@ -53,6 +54,11 @@ const router = new Router({
       path: '/lazyload',
       name: 'LazyLoad',
       component: LazyLoad,
+    },{
+      meta: { title: '消息机制' },
+      path: '/message-director',
+      name: 'MessageDirector',
+      component: MessageDirector,
     }
   ]
 })

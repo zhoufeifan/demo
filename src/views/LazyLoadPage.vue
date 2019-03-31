@@ -6,11 +6,16 @@
 <script>
   import LazyImage from '@/components/LazyImage.vue'
   const imageList = [
-    'https://pic.fanqier.cn/static/img/section-banner1.jpg',
-    'https://pic.fanqier.cn/static/img/section-banner2.jpg',
-    'https://pic.fanqier.cn/static/img/section-banner3.jpg',
-    'https://pic.fanqier.cn/static/img/section-banner4.jpg',
-    'https://pic.fanqier.cn/static/img/section-banner5.jpg',
+    'http://zff-img.lshwn.cn/images/0.jpg',
+    'http://zff-img.lshwn.cn/images/1.jpg',
+    'http://zff-img.lshwn.cn/images/2.jpg',
+    'http://zff-img.lshwn.cn/images/3.jpg',
+    'http://zff-img.lshwn.cn/images/4.jpg',
+    'http://zff-img.lshwn.cn/images/5.jpg',
+    'http://zff-img.lshwn.cn/images/6.jpg',
+    'http://zff-img.lshwn.cn/images/7.jpg',
+    'http://zff-img.lshwn.cn/images/8.jpg',
+    'http://zff-img.lshwn.cn/images/9.jpg',
   ]
   export default {
     name: 'LazyLoadPage',
