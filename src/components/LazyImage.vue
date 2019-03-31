@@ -3,9 +3,10 @@
 </section>
 </template>
 <script>
+  // import IntersectionObserver from 'intersection-observer'
   const screenHeight = window.screen.height
-  const nima = require('intersection-observer');
-  console.log(nima)
+  import { jsLoader } from '@/utils/tools'
+
   // 定义缓冲距离，用于懒加载
   const BUFFER_HEIGHT = 0
   export default {
@@ -13,7 +14,10 @@
     props: {
       imgUrl: String
     },
-    mounted() {
+    async mounted() {
+      if(typeof IntersectionObserver  !== 'function'){
+        await jsLoader('//polyfill.io/v2/polyfill.min.js?features=IntersectionObserver')
+      }
       const observer = new IntersectionObserver(
         (changes) => {
           changes.forEach((change) => {
