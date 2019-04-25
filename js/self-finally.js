@@ -1,4 +1,4 @@
-//自己实现promise的finally
+//自己实现 promise 的 finally
 Promise.prototype.finally = function(callback){
   let P = this.constructor;
   return this.then(

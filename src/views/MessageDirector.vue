@@ -3,12 +3,19 @@
 </main>
 </template>
 <script>
+const messageDirector = {
+  receiveMessage(data){
+    console.log(data)
+  },
+  sendMessage(){
+  }
+}
   export default {
     name: 'MessageDirector',
-    components: {
-      
-    },
     mounted() {
+    },
+    methods: {
+
     },
     data() {
       return {
