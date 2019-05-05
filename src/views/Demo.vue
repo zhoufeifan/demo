@@ -1,9 +1,3 @@
-<template>
-<div class="container">
-  <p class="child"></p>
-</div>
-
-</template>
 <script>
 import { mapState } from 'vuex'
 import Vue from 'vue'
@@ -15,15 +9,6 @@ import Vue from 'vue'
     created(){
     },
     mounted(){
-      var blob = new Blob([document.querySelector('#worker').textContent]);
-      var url = window.URL.createObjectURL(blob);
-      var worker = new Worker(url);
-
-      worker.onmessage = function (e) {
-        // e.data === 'some message'
-        console.log(e.data)
-      };
-      worker.postMessage('Work done!');
     },
     computed: {
     },
@@ -36,6 +21,16 @@ import Vue from 'vue'
       return {
         aaa: 'aa'
       }
+    },
+    render(){
+      const aa = 'nima'
+      const tag = '<span>fd</span>'
+      return(
+        <div>
+          {aa}
+          <tag/>
+        </div>
+        )
     }
   }
 </script>

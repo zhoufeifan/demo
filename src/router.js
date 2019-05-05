@@ -9,6 +9,7 @@ import SlideBarList from './views/SlideBarList.vue'
 import LazyLoad from './views/LazyLoadPage.vue'
 import ProgressBar from './views/ProgressBar.vue'
 import MessageDirector from './views/MessageDirector.vue'
+import GetRef from './views/GetRef'
 
 Vue.use(Router)
 const router = new Router({
@@ -59,6 +60,11 @@ const router = new Router({
       path: '/message-director',
       name: 'MessageDirector',
       component: MessageDirector,
+    },{
+      meta: { title: '跨层级获取实例' },
+      path: '/get-ref',
+      name: 'GetRef',
+      component: GetRef,
     }
   ]
 })
