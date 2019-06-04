@@ -7,7 +7,7 @@ import MoveDirection from './views/MoveDirection.vue'
 import NumberInput from './views/NumberInput.vue'
 import SlideBarList from './views/SlideBarList.vue'
 import LazyLoad from './views/LazyLoadPage.vue'
-import ProgressBar from './views/ProgressBar.vue'
+import AwesomeAnimation from './views/AwesomeAnimation.vue'
 import MessageDirector from './views/MessageDirector.vue'
 import GetRef from './views/GetRef'
 
@@ -41,10 +41,10 @@ const router = new Router({
       name: 'numberInput',
       component: NumberInput,
     },{
-      meta: { title: '进度条' },
-      path: '/progress-bar',
-      name: 'progressBar',
-      component: ProgressBar,
+      meta: { title: '好玩的动画' },
+      path: '/awesome-animation',
+      name: 'awesomeAnimation',
+      component: AwesomeAnimation,
     },{
       meta: { title: '滑动条' },
       path: '/slide-bar-list',
