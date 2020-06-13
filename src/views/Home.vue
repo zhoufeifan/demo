@@ -12,6 +12,7 @@
         <li><router-link to="/message-director">消息机制</router-link></li>
         <li><router-link to="/get-ref">跨层级获取实例</router-link></li>
         <li><router-link to="/demo">demo草稿</router-link></li>
+        <li><router-link to="/ie-iframe">IE iframe test</router-link></li>
         <li></li>
       </ul>
     </div>

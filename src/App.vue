@@ -3,6 +3,7 @@
   <keep-alive>
       <router-view v-if="$route.meta.keepAlive"></router-view>
   </keep-alive>
+  <global-slot name="global-el"></global-slot>
   <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>

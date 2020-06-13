@@ -10,6 +10,7 @@ import LazyLoad from './views/LazyLoadPage.vue'
 import AwesomeAnimation from './views/AwesomeAnimation.vue'
 import MessageDirector from './views/MessageDirector.vue'
 import GetRef from './views/GetRef'
+import IEIframe from './views/IEIframe'
 
 Vue.use(Router)
 const router = new Router({
@@ -65,6 +66,11 @@ const router = new Router({
       path: '/get-ref',
       name: 'GetRef',
       component: GetRef,
+    },{
+      meta: { title: 'IE11Iframe' },
+      path: '/ie-iframe',
+      name: 'ieIframe',
+      component: IEIframe,
     }
   ]
 })

@@ -9,7 +9,7 @@
 }
 input{
   //覆盖 ios 钉钉disable输入框默认的透明度
-  -webkit-appearance: none;
+  // -webkit-appearance: none;
   &:disabled{
     opacity: 1;
   }

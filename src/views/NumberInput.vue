@@ -12,6 +12,7 @@
     methods: {
       inputFilter(e){
         const currentValue = e.target.value
+        console.log(currentValue);
         if (!/^-?(([1-9]\d*|0)(\.\d*)?)?$/.test(currentValue)) {
           let result = ''
           // 在处理在文本中间插入非法字符的情况，34.54h65 => 34.54，没有匹配到则默认替换为空
